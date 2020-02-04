@@ -74,12 +74,7 @@ Red : #e33 = @redcolor
 @contentfont:'Exo', sans-serif;
 @btntextcolor:#eee;
 
-.sidecardhead{
-  padding-left: 1rem;
-        h5{
-      padding: 2rem 1rem 1rem 0;
-    }
-}
+
 button{
     background-color: #303030;
     border: none;

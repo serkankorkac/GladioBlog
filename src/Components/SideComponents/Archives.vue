@@ -1,6 +1,23 @@
 <template>
 <aside>
+  <div class="sidecardhead">
     <h5>Archives</h5>
+ 
+    </div>
+        <ul>
+      <li><a href="">Ocak 2019   </a> (1)</li>
+      <li><a href="">Şubat 2019  </a> (1)</li>
+      <li><a href="">Mart 2019   </a> (1)</li>
+      <li><a href="">Nisan 2019  </a> (1)</li>
+      <li><a href="">Mayıs 2019  </a> (1)</li>
+      <li><a href="">Haziran 2019</a> (1)</li>
+      <li><a href="">Temmuz 2019 </a> (1)</li>
+      <li><a href="">Ağustos 2019</a> (1)</li>
+      <li><a href="">Eylül 2019  </a> (1)</li>
+      <li><a href="">Ekim 2019   </a> (1)</li>
+      <li><a href="">Kasım 2019  </a> (1)</li>
+      <li><a href="">Aralık 2019 </a> (1)</li>
+    </ul>
 </aside>
 </template>
 
@@ -37,5 +54,25 @@ Red : #e33 = @redcolor
 @headingfont:'Kanit', sans-serif;
 @contentfont:'Exo', sans-serif;
 @btntextcolor:#eee;
+
+ul{
+  padding-left:2rem;
+}
+
+li{
+   list-style-type: circle;
+   padding-top:.7rem;
+  
+}
+a{
+  text-decoration: none;
+  color:@redcolor;
+  transition: .5s;
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+a:hover{
+  color:@nbfcolor;
+}
 
 </style>

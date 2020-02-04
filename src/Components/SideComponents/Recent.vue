@@ -1,6 +1,20 @@
 <template>
 <aside>
-    <h5>Recent</h5>
+      <div class="sidecardhead">
+    <h5>Recent Comments</h5>
+
+    </div>
+
+    <ul>
+      <li> <img src="https://i.pravatar.cc/32/{55*55}" width="55" height="55"
+          alt="Blog İmage"><a href=""> ThomasW </a> on <a href=""> different sidebar layouts </a></li>
+      <li> <img src="https://i.pravatar.cc/10/{55*55}" width="55" height="55"
+          alt="Blog İmage"><a href=""> ThomasW </a> on <a href=""> different sidebar layouts </a></li>
+      <li> <img src="https://i.pravatar.cc/140/{55*55}" width="55" height="55"
+          alt="Blog İmage"><a href=""> ThomasW </a> on <a href=""> different sidebar layouts </a></li>
+      <li> <img src="https://i.pravatar.cc/153/{55*55}" width="55" height="55"
+          alt="Blog İmage"><a href=""> ThomasW </a> on <a href=""> different sidebar layouts </a></li>
+    </ul>
 </aside>
 </template>
 
@@ -37,5 +51,25 @@ Red : #e33 = @redcolor
 @headingfont:'Kanit', sans-serif;
 @contentfont:'Exo', sans-serif;
 @btntextcolor:#eee;
+
+a{
+  text-decoration: none;
+  color:@redcolor;
+  transition: .5s;
+  padding-left: .5rem;
+  
+}
+a:hover{
+  color:@nbfcolor;
+}
+
+ul{
+  padding:1rem;
+}
+li{
+  list-style: none; 
+  padding-top: 1rem;
+}
+
 
 </style>

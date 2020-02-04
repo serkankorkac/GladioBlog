@@ -90,6 +90,11 @@ body{
   font-family: @contentfont !important;
   color: @nbfcolor;
 }
+ul{
+  margin:0;
+  padding:0;
+
+}
 #app{
  background-color: @pagebgcolor;  
 }
@@ -113,6 +118,12 @@ body{
 .sidecontent{
    background-color: @sidebgcolor;
    border: 1px solid #ddd
+}
+.sidecardhead{
+  padding-left: 1rem;
+        h5{
+      padding: 2rem 1rem 1rem 0;
+    }
 }
 h1,h2,h3,h4,h5,h6,button{
   font-family: @headingfont;
