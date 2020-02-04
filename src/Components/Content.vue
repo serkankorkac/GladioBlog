@@ -5,7 +5,8 @@
           alt="Blog İmage"></div>
       <div class="contenttext">
         <div class="blog-meta"><time class="blogtime">January 24,
-            2016</time><span>/ </span><a class="authorname">Thomas</a></div><a>
+            2016</time><span>/ </span><a class="authorname">Thomas</a></div>
+            <a clas="blogheadtext">
           <h3>Magazine WordPress Theme</h3>
         </a>
         <p>Lorem ipsum dolor sit amet,
@@ -107,12 +108,13 @@ section {
 }
 
 .contentimg {
-  width: 45%;
+  width: 30%;
+  margin-left: 3rem;
 }
 
 .contenttext {
-  padding-left: 1rem;
-  width: 55%;
+  padding-left: 3rem;
+  width: 62%;
   font-size: 1rem;
 
   p {
@@ -160,6 +162,10 @@ section {
 a{
      transition: 1s;
      cursor: pointer;
+     
+}
+a:hover{
+  color:@redcolor;
 }
 button:hover{
   background-color: @redcolor;

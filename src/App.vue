@@ -13,11 +13,11 @@
 
       <div class="row col-12">
 
-        <div class="col-8 blogcontent">
+        <div class="col-9 blogcontent">
           <Content></Content>
         </div>
 
-        <div class="col-4 sidecontent">
+        <div class="col-3 sidecontent">
           <Sidebar></Sidebar>
         </div>
 
