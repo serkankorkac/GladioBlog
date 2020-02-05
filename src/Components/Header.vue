@@ -64,6 +64,7 @@ form{
   border:none;
 
 }
+
 .search{
     
     padding: 2px;
@@ -87,6 +88,12 @@ i, .fa-search {
 //  padding: 12px;
   margin: 14px;
  
+}
+.social:hover{
+ cursor: pointer;
+  i{
+    color:@nbfcolor;
+  }
 }
 
 .ser{
