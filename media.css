@@ -10,22 +10,22 @@ body {
 }
 @media (max-width: 575.98px) {
   html {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
   html {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 @media (min-width: 768px) and (max-width: 991.98px) {
   html {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 @media (min-width: 1200px) {
@@ -34,7 +34,6 @@ body {
   }
 }
 @media (max-width: 992px) {
-  /* ===> APP <===*/
   /* ===> APP <===*/
   .blogcontent {
     width: 100% !important;
@@ -66,6 +65,16 @@ body {
     display: inline-block;
     float: none;
   }
+  /* ===> BLOGS <===*/
+  .cardb {
+    text-align: left !important;
+    padding-bottom: 0 !important;
+  }
+  .cardb h3,
+  .cardb p,
+  .cardb a {
+    margin-top: 1rem;
+  }
 }
 @media (max-width: 768px) {
   /* ===> HEADER <===*/
@@ -82,5 +91,15 @@ body {
   #searchbar form,
   #social-icons form {
     display: inline-block !important;
+  }
+}
+@media (max-width: 575.98px) {
+  /* ===> BLOGS <===*/
+  .contentimg,
+  .contenttext {
+    width: 100% !important;
+    float: none !important;
+    margin-left: 0 !important;
+    padding: 1.2rem !important;
   }
 }

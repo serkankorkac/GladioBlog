@@ -110,13 +110,13 @@ img{
 }
 
 .contentimg {
-  width: 30%;
-  margin-left: 3rem;
+  width: 35%;
+  margin-left: 2rem;
 }
 
 .contenttext {
-  padding-left: 3rem;
-  width: 62%;
+  margin-left: 2rem;
+  width: 55%;
   font-size: 1rem;
 
   p {
@@ -128,7 +128,7 @@ img{
 .blog-meta {
   font-size: 0.85rem;
   color: @incolor;
-  margin-top: 0.70rem;
+
 }
 
 .cardb {

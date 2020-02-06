@@ -58,13 +58,16 @@ export default {
 @contentfont:'Exo', sans-serif;
 header{
     width:100%;
-    padding: 2rem;
+    padding: 2,1rem;
 }
 
 #searchbar,.logo,#social-icons,#search-social{ 
   display:inline-block;
   vertical-align: middle;
   margin: 1rem 0 1rem 0;
+}
+#social-icons{
+  margin-right: 1rem;
 }
 #search-social{
   float: right;
