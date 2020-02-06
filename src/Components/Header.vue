@@ -1,31 +1,39 @@
 <template>
   <header>
-    <a class="navbar-brand m-4" href="#"><img src="../assets/siyah.png" width="150" alt="Lanista Software"></a>
+    <div class="logo">
+    <a class="navbar-brand m-4" href="#"><img src="../assets/siyah.png" width="200" alt="Lanista Software"></a>
+</div>
+<div class="search-social">
+    <div class="searchbar m-4">
+      <form class="form-inline clearfix" id="header-form">
+        <div class="input-group-prepend">
+          <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
+          <div class="social " id="search-icon"><i class="fas fa-search"></i></div>
+        </div>
+      </form>
+    </div>
 
-    <form class="form-inline">
-      <input class="form-control search" type="search" placeholder="Search" aria-label="Search">
-      <div class="input-group-prepend ser">
-        <span class="social" id="basic-addon1"><i class="fas fa-search"></i></span>
-      </div>
-   
 
-    <li><a href="#">
-        <div class="social"><i class="fab fa-facebook-f"></i></div>
-      </a></li>
-    <li><a href="#">
-        <div class="social"><i class="fab fa-twitter"></i></div>
-      </a></li>
-    <li><a href="#">
-        <div class="social"><i class="fab fa-linkedin"></i></div>
-      </a></li>
-    <li><a href="#">
-        <div class="social"><i class="fab fa-instagram"></i></div>
-      </a></li>
-    <li><a href="#">
-        <div class="social"><i class="fab fa-pinterest"></i></div>
-      </a></li>
- </form>
-
+    <div class="social-icons m-4">
+      <ul>
+        <li><a href="#">
+            <div class="social"><i class="fab fa-facebook-f"></i></div>
+          </a></li>
+        <li><a href="#">
+            <div class="social"><i class="fab fa-twitter"></i></div>
+          </a></li>
+        <li><a href="#">
+            <div class="social"><i class="fab fa-linkedin"></i></div>
+          </a></li>
+        <li><a href="#">
+            <div class="social"><i class="fab fa-instagram"></i></div>
+          </a></li>
+        <li><a href="#">
+            <div class="social"><i class="fab fa-pinterest"></i></div>
+          </a></li>
+      </ul>
+    </div>
+    </div>
   </header>
 </template>
 
@@ -52,41 +60,38 @@ header{
     width:100%;
     padding: 2rem;
 }
-form{
-    margin-top:2rem;
-    float: right;
-}
 
+.searchbar,.logo,.social-icons,.search-social{ 
+  display:inline-block;
+  vertical-align: middle;
+}
+.search-social{
+  float: right;
+  padding-top: 2%;
+}
 .social {
-  width: 50px;
-  height: 50px;
+  width: 3rem;
+  height: 3rem;
   background-color: @redcolor;
   border:none;
 
 }
-
-.search{
-    
-    padding: 2px;
-}
-
-li,
-ul {
-  list-style: none;
+.search-input{    
+    padding: 0.125rem;
 }
 
 li {
 
   float: left;
-  padding: 2px;
+  padding: 0.125rem;
 }
 
 i, .fa-search {
 
-  font-size: 22px;
+  font-size: 1.4rem;
   color: @bgcolor;
 //  padding: 12px;
-  margin: 14px;
+  margin: 33%;
  
 }
 .social:hover{
@@ -95,9 +100,8 @@ i, .fa-search {
     color:@nbfcolor;
   }
 }
-
-.ser{
-    margin-right:1.5rem;
+#search-icon{
+    display: inline-block;
 }
 .form-inline{
     input{

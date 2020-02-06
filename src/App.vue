@@ -81,21 +81,6 @@ Red : #e33 = @redcolor
 @contentfont:'Exo', sans-serif;
 @btntextcolor:#eee;
 
-html{
-  background-color: @pagebgcolor;
-  font-family: @contentfont !important;
-  font-size: 16px;
-}
-body{
-   background-color: @pagebgcolor;
-  font-family: @contentfont !important;
-  color: @nbfcolor;
-}
-ul{
-  margin:0;
-  padding:0;
-
-}
 #app{
  background-color: @pagebgcolor;  
 }
@@ -105,7 +90,7 @@ ul{
   padding: 0;
   max-width: 1280px;
   width: 100%;
- background: #fff;
+ background: @bgcolor;
  box-shadow: 0 0 2px #aaa;
 }
 .row{
@@ -128,6 +113,7 @@ ul{
       padding: 2rem 1rem 1rem 0;
     }
 }
+
 h1,h2,h3,h4,h5,h6,button{
   font-family: @headingfont;
 
@@ -144,37 +130,18 @@ nav{
 
 }
 footer{
-   background-color: @nbfcolor;
- 
- 
+   background-color: @nbfcolor; 
 }
-// Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) {
-  html {
-    font-size: 8px
-  }
+li,
+ul {
+  list-style: none;
 }
 
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) { 
-   html {
-    font-size: 12px
-  }
- }
+ul {
+  margin: 0;
+  padding: 0;
 
-// Medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) { 
-   html {
-    font-size: 14px
-  }
- }
-
-// Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) { 
-   html {
-    font-size: 16px
-  }
- }
+}
 
 // Extra large devices (large desktops)
 // No media query since the extra-large breakpoint has no upper bound on its width

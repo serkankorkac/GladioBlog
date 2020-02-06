@@ -1,0 +1,60 @@
+html {
+  background-color: #E5E5E5;
+  font-family: 'Exo', sans-serif !important;
+  font-size: 16px;
+}
+body {
+  background-color: #E5E5E5;
+  font-family: 'Exo', sans-serif !important;
+  color: #303030;
+}
+@media (max-width: 575.98px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media (max-width: 992px) {
+  .logo {
+    display: block;
+    width: 100%;
+    float: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .search-social {
+    display: block;
+    width: 100%;
+    float: none;
+    text-align: center;
+    padding-top: 0 !important;
+  }
+  .searchbar,
+  .social-icons {
+    display: inline-block;
+    float: none;
+  }
+  /*header*/
+}
+@media (max-width: 768px) {
+}
