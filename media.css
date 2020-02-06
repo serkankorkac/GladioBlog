@@ -42,19 +42,32 @@ body {
     margin: 0;
     padding: 0;
   }
-  .search-social {
+  #search-social {
     display: block;
     width: 100%;
     float: none;
     text-align: center;
     padding-top: 0 !important;
   }
-  .searchbar,
-  .social-icons {
+  #searchbar,
+  #social-icons {
     display: inline-block;
     float: none;
   }
-  /*header*/
 }
 @media (max-width: 768px) {
+  #search-social {
+    text-align: center;
+  }
+  #searchbar,
+  #social-icons {
+    display: block !important;
+    width: 100%;
+  }
+  #searchbar ul,
+  #social-icons ul,
+  #searchbar form,
+  #social-icons form {
+    display: inline-block !important;
+  }
 }

@@ -3,8 +3,8 @@
     <div class="logo">
     <a class="navbar-brand m-4" href="#"><img src="../assets/siyah.png" width="200" alt="Lanista Software"></a>
 </div>
-<div class="search-social">
-    <div class="searchbar m-4">
+<div id="search-social">
+    <div id="searchbar" >
       <form class="form-inline clearfix" id="header-form">
         <div class="input-group-prepend">
           <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
@@ -14,7 +14,7 @@
     </div>
 
 
-    <div class="social-icons m-4">
+    <div id="social-icons" class="clearfix">
       <ul>
         <li><a href="#">
             <div class="social"><i class="fab fa-facebook-f"></i></div>
@@ -61,11 +61,12 @@ header{
     padding: 2rem;
 }
 
-.searchbar,.logo,.social-icons,.search-social{ 
+#searchbar,.logo,#social-icons,#search-social{ 
   display:inline-block;
   vertical-align: middle;
+  margin: 1rem 0 1rem 0;
 }
-.search-social{
+#search-social{
   float: right;
   padding-top: 2%;
 }
