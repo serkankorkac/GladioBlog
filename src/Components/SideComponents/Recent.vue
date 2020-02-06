@@ -9,7 +9,7 @@
       <li>
         <div class="imgdiv">
           <a href="">
-            <img src="https://i.pravatar.cc/122/{55*55}" width="55" height="55" alt="Blog İmage">
+            <img src="https://i.pravatar.cc/122/{55*55}" alt="Blog İmage">
           </a>
         </div>
         <div class="textdiv"> <a href=""> ThomasW </a>
@@ -19,7 +19,7 @@
       <li>
         <div class="imgdiv">
           <a href="">
-            <img src="https://i.pravatar.cc/123/{55*55}" width="55" height="55" alt="Blog İmage">
+            <img src="https://i.pravatar.cc/123/{55*55}" alt="Blog İmage">
           </a>
         </div>
         <div class="textdiv"> <a href=""> ThomasW </a>
@@ -29,7 +29,7 @@
       <li>
         <div class="imgdiv">
           <a href="">
-            <img src="https://i.pravatar.cc/143/{55*55}" width="55" height="55" alt="Blog İmage">
+            <img src="https://i.pravatar.cc/143/{55*55}" alt="Blog İmage">
           </a>
         </div>
         <div class="textdiv"> <a href=""> ThomasW </a>
@@ -39,7 +39,7 @@
       <li>
         <div class="imgdiv">
           <a href="">
-            <img src="https://i.pravatar.cc/9/{55*55}" width="55" height="55" alt="Blog İmage">
+            <img src="https://i.pravatar.cc/9/{55*55}" alt="Blog İmage">
           </a>
         </div>
         <div class="textdiv"> <a href=""> ThomasW </a>
@@ -113,15 +113,12 @@ li{
 img{
   vertical-align: text-top;
   float: left;
-  max-width: 100%;
-  margin-right: 1.2rem;
+  width: 100%;
+  height: auto;
+  padding-right: 1.2rem;
 }
-.textdiv{
-  margin-right: 1rem;
+.imgdiv{
+width: 5rem;
 }
-
-// ul {text-align: justify}
-// ul::after {width: 100%; display: inline-block; content: "."; visibility: hidden}
-// li {display: inline-block}
 
 </style>

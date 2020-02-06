@@ -75,6 +75,20 @@ body {
   .cardb a {
     margin-top: 1rem;
   }
+  /* ===> RECENT <===*/
+  .textdiv {
+    text-align: left;
+  }
+  aside {
+    padding-left: 1rem;
+    text-align: left !important;
+  }
+  aside ul {
+    text-align: left !important;
+  }
+  aside ul li {
+    text-align: left !important;
+  }
 }
 @media (max-width: 768px) {
   /* ===> HEADER <===*/
