@@ -83,6 +83,7 @@ Red : #e33 = @redcolor
 
 #app{
  background-color: @pagebgcolor;  
+ 
 }
 .container{
   background-color:@bgcolor;

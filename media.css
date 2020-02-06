@@ -34,13 +34,24 @@ body {
   }
 }
 @media (max-width: 992px) {
+  /* ===> APP <===*/
+  /* ===> APP <===*/
+  .blogcontent {
+    width: 100% !important;
+    float: none;
+    text-align: center;
+  }
+  .sidecontent {
+    width: 100% !important;
+    float: none;
+    text-align: center;
+  }
+  /* ===> HEADER <===*/
   .logo {
     display: block;
     width: 100%;
     float: none;
     text-align: center;
-    margin: 0;
-    padding: 0;
   }
   #search-social {
     display: block;
@@ -48,6 +59,7 @@ body {
     float: none;
     text-align: center;
     padding-top: 0 !important;
+    margin: 0 !important;
   }
   #searchbar,
   #social-icons {
@@ -56,6 +68,7 @@ body {
   }
 }
 @media (max-width: 768px) {
+  /* ===> HEADER <===*/
   #search-social {
     text-align: center;
   }

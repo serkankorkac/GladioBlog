@@ -70,6 +70,9 @@ header{
   float: right;
   padding-top: 2%;
 }
+#searchbar{
+  margin-right: 2rem;
+}
 .social {
   width: 3rem;
   height: 3rem;
@@ -91,7 +94,6 @@ i, .fa-search {
 
   font-size: 1.4rem;
   color: @bgcolor;
-//  padding: 12px;
   margin: 33%;
  
 }

@@ -1,8 +1,7 @@
 <template>
   <section>
     <div class="cardb clearfix">
-      <div class="contentimg"><img src="https://i.picsum.photos/id/1/880/660.jpg" width="300" height="250"
-          alt="Blog İmage"></div>
+      <div class="contentimg"><img src="https://i.picsum.photos/id/1/880/660.jpg" alt="Blog İmage"></div>
       <div class="contenttext">
         <div class="blog-meta"><time class="blogtime">January 24,
             2016</time><span>/ </span><a class="authorname">Thomas</a></div>
@@ -99,7 +98,10 @@ export default {
 section {
   width: 100%;
 }
-
+img{
+  width: 100%;
+  height: auto;
+}
 .contentimg,
 .contenttext {
   margin: 0;
