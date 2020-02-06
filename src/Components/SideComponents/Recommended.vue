@@ -119,10 +119,9 @@ a{
 
 }
 .sidetext{
-  width: 70%;
-  float: left;
+   float: left;
    padding-top:1rem;
-   padding-left:1rem;
+  //  padding-left:1rem;
     h6{
       color: @redcolor;
       transition: 1s;

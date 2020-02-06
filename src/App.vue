@@ -13,11 +13,11 @@
 
       <div class="row col-12">
 
-        <div class="col-9 blogcontent">
+        <div class="blogcontent">
           <Content></Content>
         </div>
 
-        <div class="col-3 sidecontent">
+        <div class="sidecontent">
           <Sidebar></Sidebar>
         </div>
 
@@ -84,6 +84,7 @@ Red : #e33 = @redcolor
 html{
   background-color: @pagebgcolor;
   font-family: @contentfont !important;
+  font-size: 16px;
 }
 body{
    background-color: @pagebgcolor;
@@ -112,10 +113,12 @@ ul{
   margin: 0;
 }
 .blogcontent{
+  width: 70%;
   margin: 0;
   //padding:3.5rem 3.5rem;
 }
 .sidecontent{
+  width: 30%;
    background-color: @sidebgcolor;
    border: 1px solid #ddd
 }
@@ -145,6 +148,35 @@ footer{
  
  
 }
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  html {
+    font-size: 8px
+  }
+}
 
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { 
+   html {
+    font-size: 12px
+  }
+ }
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) { 
+   html {
+    font-size: 14px
+  }
+ }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { 
+   html {
+    font-size: 16px
+  }
+ }
+
+// Extra large devices (large desktops)
+// No media query since the extra-large breakpoint has no upper bound on its width
 
 </style>
