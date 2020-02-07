@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser =require('body-parser');
 const cors = require('cors');
 const app = express();
+const bcrypt = require('bcrypt');
 
 //Middleware
 
@@ -19,5 +20,9 @@ const author = require('./routes/api/authorService/authorService');
 app.use('/api/author',author);
 const port = process.env.PORT || 2500;
 
-app.listen(port,()=>console.log(`server started on port ${port}`));
+app.listen(port,()=>{
+    console.log(`server started on port ${port}`)
+     
+
+});
 

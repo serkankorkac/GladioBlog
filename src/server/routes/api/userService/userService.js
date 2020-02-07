@@ -2,6 +2,7 @@ const exprees = require('express');
 const mongodb = require('mongodb');
 const router = exprees.Router();
 const connectService = require('../ConnectService/connectService');
+const bcrypt = require('bcrypt');
 
 // var user = async () => {
 //   return await connectService.loadUser();
@@ -16,13 +17,17 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const user = await connectService.loadUser();
-  await user.insertOne({
-    name: name.req.body.name,
-    email: req.body.email,
-    img: req.body.img,
-    author: new mongodb.ObjectId(req.body.author) //yetki
-  })
-  res.status(201).send();
+    bcrypt.hash(req.body.pass,10).then( async pass=>{
+      await user.insertOne({
+        name:req.body.name,
+        email: req.body.email,
+        img: req.body.img,
+        pass:pass,
+        author: new mongodb.ObjectId(req.body.author) //yetki
+      })
+      res.status(201).send();
+      console.log(pass)
+   });
 });
 router.put('/:userid', async (req, res) => {
     const user = await connectService.loadUser();
