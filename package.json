@@ -11,6 +11,9 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+
+    "vue": "^2.5.11",
+    "vue-router": "^3.1.5"
     "bcrypt": "^3.0.8",
     "body-parser": "^1.19.0",
     "connect-mongodb-session": "^2.3.1",
