@@ -14,11 +14,13 @@
 
       <div class="row col-12">
 
-        <div class="col-9 blogcontent">
+
+        <div clas="col-9 blogcontent">
            <router-view></router-view>
+
         </div>
 
-        <div class="col-3 sidecontent">
+        <div class="sidecontent">
           <Sidebar></Sidebar>
         </div>
 
@@ -80,22 +82,9 @@ Red : #e33 = @redcolor
 @contentfont:'Exo', sans-serif;
 @btntextcolor:#eee;
 
-html{
-  background-color: @pagebgcolor;
-  font-family: @contentfont !important;
-}
-body{
-   background-color: @pagebgcolor;
-  font-family: @contentfont !important;
-  color: @nbfcolor;
-}
-ul{
-  margin:0;
-  padding:0;
-
-}
 #app{
  background-color: @pagebgcolor;  
+ 
 }
 .container{
   background-color:@bgcolor;
@@ -103,7 +92,7 @@ ul{
   padding: 0;
   max-width: 1280px;
   width: 100%;
- background: #fff;
+ background: @bgcolor;
  box-shadow: 0 0 2px #aaa;
 }
 .row{
@@ -111,10 +100,12 @@ ul{
   margin: 0;
 }
 .blogcontent{
+  width: 70%;
   margin: 0;
   //padding:3.5rem 3.5rem;
 }
 .sidecontent{
+  width: 30%;
    background-color: @sidebgcolor;
    border: 1px solid #ddd
 }
@@ -124,6 +115,7 @@ ul{
       padding: 2rem 1rem 1rem 0;
     }
 }
+
 h1,h2,h3,h4,h5,h6,button{
   font-family: @headingfont;
 
@@ -140,10 +132,20 @@ nav{
 
 }
 footer{
-   background-color: @nbfcolor;
- 
- 
+   background-color: @nbfcolor; 
+}
+li,
+ul {
+  list-style: none;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+
+}
+
+// Extra large devices (large desktops)
+// No media query since the extra-large breakpoint has no upper bound on its width
 
 </style>

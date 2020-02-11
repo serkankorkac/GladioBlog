@@ -1,6 +1,8 @@
 <template>
   <section>
+
     <Blogs></Blogs>
+
   </section>
 </template>
 
@@ -33,7 +35,10 @@ export default {
 section {
   width: 100%;
 }
-
+img{
+  width: 100%;
+  height: auto;
+}
 .contentimg,
 .contenttext {
   margin: 0;
@@ -42,11 +47,14 @@ section {
 }
 
 .contentimg {
-  width: 45%;
+
+  width: 35%;
+  margin-left: 2rem;
 }
 
 .contenttext {
-  padding-left: 1rem;
+  margin-left: 2rem;
+
   width: 55%;
   font-size: 1rem;
 
@@ -59,7 +67,7 @@ section {
 .blog-meta {
   font-size: 0.85rem;
   color: @incolor;
-  margin-top: 0.70rem;
+
 }
 
 .cardb {
