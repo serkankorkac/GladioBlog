@@ -2,6 +2,7 @@
   <div id="app">
     <div class="container">
 
+     
 
       <div class="row col-12">
         <Header></Header>
@@ -14,7 +15,7 @@
       <div class="row col-12">
 
         <div class="col-9 blogcontent">
-          <Content></Content>
+           <router-view></router-view>
         </div>
 
         <div class="col-3 sidecontent">
@@ -39,7 +40,6 @@
 <script>
 import Header from './Components/Header';
 import Navigation from './Components/Navigation';
-import Content from './Components/Content';
 import Sidebar from './Components/Sidebar';
 import Footer from './Components/Footer';
 export default {
@@ -47,7 +47,6 @@ export default {
   components:{
     Header,
     Navigation,
-    Content,
     Sidebar,
     Footer
   },

@@ -6,11 +6,9 @@
 
 <script>
 import Blogs from './ContentComponents/Blogs'
-import Blog from './ContentComponents/Blog'
 export default {
   components:{
-    Blogs,
-    Blog
+    Blogs
   },
 
   name: 'Content',

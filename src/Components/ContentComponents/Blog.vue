@@ -1,12 +1,33 @@
 <template>
   <section>
-      <h1>Blog alanı</h1>
-      <Comment></Comment>
+    <div class="cardb clearfix">
+        <router-view></router-view>
+      <div class="contentimg"><img :src="$route.params.photo">
+      </div>
+
+      <div class="contenttext">
+        <div class="blog-meta"><time class="blogtime">{{$route.params.date}}</time><span></span><a class="authorname">  /  {{ $route.params.author}}</a></div><a>
+          <h3>{{$route.params.title}}</h3>
+        </a>
+        <p class="description">{{$route.params.description}}
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="nav-previous">
+      <a href=""><i class="fas fa-angle-double-left"></i> Prev</a>
+       <div class="nav-next">
+      <a href="">Next <i class="fas fa-angle-double-right"></i></a>
+    </div>
+    </div>
+    
+    <hr>
+    <Comments></Comments>
   </section>
 </template>
 
 <script>
-
+import {eventBus} from '../../main'
 import Comments from './Comment'
 export default {
     components:{
@@ -30,76 +51,46 @@ export default {
 @btntextcolor: #eee;
 @headingfont: 'Kanit', sans-serif;
 @contentfont: 'Exo', sans-serif;
-
-section {
-  width: 100%;
+@blackHover:#303030;
+section{
+    padding-left: 2rem;
 }
-
-.contentimg,
+.cardb{
+    padding-top: 2rem
+}
+.cardb .contentimg{
+    text-align: center
+}
 .contenttext {
-  margin: 0;
-  padding: 0;
-  float: left;
-}
-
-.contentimg {
-  width: 45%;
-}
-
-.contenttext {
-  padding-left: 1rem;
-  width: 55%;
+  padding-left: 1.4rem;
   font-size: 1rem;
 
   p {
     letter-spacing: 0.1rem;
     padding-bottom: 1.5rem;
+    line-height: 1.8rem
+  }
+  h3{
+      padding: 1rem 0 1.1rem 0;
+  }
+  .blog-meta{
+      padding-top: 1.2rem;
   }
 }
-
 .blog-meta {
-  font-size: 0.85rem;
   color: @incolor;
-  margin-top: 0.70rem;
 }
-
-.cardb {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.continuiereading {
-  margin-top: 2rem;
-  color: #ffffff;
-  background: #999999;
-  padding: .65rem;
-
-}
-  .continuiereading:hover {
-  background-color: @redcolor;
-  color: #ffffff;
-}
-
-.olderposts {
-  margin: 3rem;
-
-  button {
-    padding: .5rem 1rem .5rem 1rem;
-    background-color: #303030;
-    color: @btntextcolor;
-    border: none;
-    transition: 1s;
-
+.nav-previous{
+  padding-bottom: 5rem;
+  a{
+    color: @redcolor;
   }
-
+  a:hover{
+    color: @blackHover;
+    text-decoration: none;
+  }
 }
-a{
-     transition: 1s;
-     cursor: pointer;
+.nav-next{
+  float: right;
 }
-button:hover{
-  background-color: @redcolor;
-  color: #ffffff;
-}
-
 </style>
