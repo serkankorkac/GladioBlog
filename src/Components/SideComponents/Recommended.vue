@@ -56,7 +56,7 @@ export default {
       this.blogs= [];
       this.blogs.push(blogs[blogs.length-3],blogs[blogs.length-2],blogs[blogs.length-1]);
       //this.recentBlogs.push(this.blogs[this.blogs.length-1],this.blogs[this.blogs.length-2],this.blogs[this.blogs.length-3])
-    
+      
     },  
     listToPopular(){
       Axios.get('http://localhost:2500/api/counter').then(res => {
