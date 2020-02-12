@@ -2,14 +2,14 @@
   <aside>
     <div class="sidecardhead">
       <h5>Recommended</h5>
-      <button class="active sidebuttons" @click="listToRecent()">Recent</button>
+      <button class="active sidebuttons" @click="listToRecent(blogs)">Recent</button>
       <button class="sidebuttons" @click="listToPopular()">Popular</button>
       <button class="sidebuttons" @click="listToComments()">Comments</button>
     </div>
 
     <ul>
-      <li>
-        <div class="imgdiv"><img src="https://i.picsum.photos/id/11/90/65.jpg" alt="Blog İmage">
+      <li  v-for="blog in blogs" :key="blog._id">
+        <div class="imgdiv"><img :src="blog.image" alt="Blog İmage">
         </div>
         <div class="sidetext">
           <a href="">
@@ -20,30 +20,7 @@
           </div>
         </div>
       </li>
-      <li>
-        <div class="imgdiv"><img src="https://i.picsum.photos/id/32/90/65.jpg" alt="Blog İmage">
-        </div>
-        <div class="sidetext">
-          <a href="">
-            <h6>Magazine WordPress Theme</h6>
-          </a>
-          <div class="blog-meta">
-            <time class="blogtime">January 24, 2016</time>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="imgdiv"><img src="https://i.picsum.photos/id/91/90/65.jpg" alt="Blog İmage">
-        </div>
-        <div class="sidetext">
-          <a href="">
-            <h6>Magazine WordPress Theme</h6>
-          </a>
-          <div class="blog-meta">
-            <time class="blogtime">January 24, 2016</time>
-          </div>
-        </div>
-      </li>
+      
     </ul>
 
 
@@ -57,29 +34,76 @@ export default {
   data() {
     return {
       blogs: [],
-      recentBlogs:[]
+
+
+    
     }
   },
   mounted() {
+    let getBlogs=[]
     Axios.get('http://localhost:2500/api/post').then(res => {
-      this.blogs = res.data;
-      console.log(this.blogs)
+      getBlogs= res.data;
+    }).then(()=>{
+      this.listToRecent(getBlogs);
     }).catch(err => {
       console.log(err);
     })
+
+    
   },
   methods: {
-    listToRecent() {
-      let blogDates = null;
-      let blogId = null;
-      // this.recentBlogs=this.blogs[this.blogs.length-1,this.blogs.length-2,this.blogs.length-3]
-      // console.log(this.recentBlogs)
-    }
-  }
+    listToRecent(blogs) {
+      this.blogs= [];
+      this.blogs.push(blogs[blogs.length-3],blogs[blogs.length-2],blogs[blogs.length-1]);
+      //this.recentBlogs.push(this.blogs[this.blogs.length-1],this.blogs[this.blogs.length-2],this.blogs[this.blogs.length-3])
+    
+    },  
+    listToPopular(){
+      Axios.get('http://localhost:2500/api/counter').then(res => {
+        this.blogCounter = [];
+        this.blogCounter = res.data;
+        var by = []
+        for (let index = 0; index < this.blogCounter.length; index++) {
 
+          if (index == 0) {
+            var element = this.blogCounter[index].counter
+          }
+          if (this.blogCounter[index].counter >= element) {
+            if (by.length > 3) {
+              for (let i = 0; i < by.length; index++) {
+                const elt = by[i];
+                if (elt < element) {
+                  by.splice(i, 1)
+                  by.push(this.blogCounter[index])
+                }
+              }
+            } else if (by.length < 3) {
+              by.push(this.blogCounter[index])
+            } else {
+              by.push(this.blogCounter[index])
+              element = this.blogCounter[index].counter
+            }
+          }
+        }
+        by.map(counter => {
+       
+          this.blogs.map(res => {
+            if (counter.blogid == res._id) {
+              this.recentBlogs=[];
+              this.recentBlogs+=counter;
+            }
+          })
+         
+        })
+      
+       console.log(this.recentBlogs)
+       console.log(this.blogPopular);
+      
+      })
+      }
+      }
 }
 </script>
-
 <style lang="less" scoped>
 /*
 Page Bg color #E5E5E5 =@pagebgcolor 

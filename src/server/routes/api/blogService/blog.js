@@ -10,6 +10,10 @@ router.get('/',async (req,res)=>{
   const post = await connectService.loadpost();
    res.send(await post.find().toArray());
 })
+router.get('/:blogid',async (req,res)=>{
+    const post = await connectService.loadpost();
+     res.send(await post.find({_id:new mongodb.ObjectId(req.params.blogid)}).toArray());
+  })
 //Add Post 
 router.post('/',async (req,res)=>{
     const post = await connectService.loadpost();
