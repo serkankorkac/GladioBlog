@@ -2,14 +2,14 @@
   <section>
     <div class="cardb clearfix">
         <router-view></router-view>
-      <div class="contentimg"><img :src="$route.params.photo">
+      <div class="contentimg"><img :src="$route.params.imageUrl">
       </div>
 
       <div class="contenttext">
-        <div class="blog-meta"><time class="blogtime">{{$route.params.date}}</time><span></span><a class="authorname">  /  {{ $route.params.author}}</a></div><a>
+        <div class="blog-meta"><time class="blogtime">{{$route.params.created}}</time><span></span><a class="authorname">  /  {{ $route.params.author}}</a></div><a>
           <h3>{{$route.params.title}}</h3>
         </a>
-        <p class="description">{{$route.params.description}}
+        <p class="description">{{$route.params.content}}
         </p>
       </div>
     </div>

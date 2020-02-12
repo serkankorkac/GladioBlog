@@ -1,15 +1,15 @@
 <template>
   <section>
-    <div class="cardb clearfix" v-for="blog in blog" :key="blog.String">
+    <div class="cardb clearfix" v-for="blog in bloglist" :key="blog.id">
         <router-view></router-view>
-      <div class="contentimg"><img :src="blog.photo==null ? imageUrl:blog.photo" width="300" height="250"></div>
+      <div class="contentimg"><img :src="blog.image==null ? imageUrl:blog.image" width="300" height="250"></div>
       <div class="contenttext">
-        <div class="blog-meta"><time class="blogtime">{{blog.date}}</time><span>/ </span><a class="authorname">{{blog.author}} - {{id}}</a></div><a>
+        <div class="blog-meta"><time class="blogtime">{{blog.cradetAt}}</time><span>/ </span><a class="authorname">{{blog.author}} - {{id}}</a></div><a>
           <h3>{{blog.title}}</h3>
         </a>
-        <p class="description">{{blog.description}}
+        <p class="description">{{blog.title}}
         </p>
-        <router-link :to="{name:'details',params:{id:blog.id,title:blog.title,photo:blog.photo,author:blog.author,date:blog.date,description:blog.description}}"><a href="" class="continuiereading">Continue reading <i class="fas fa-angle-double-right"></i> </a></router-link>
+        <router-link :to="{name:'details',params:{id:blog._id,title:blog.title,author:blog.author,content:blog.content,imageUrl:blog.image,created:blog.cradetAt}}"><a href="" class="continuiereading">Continue reading <i class="fas fa-angle-double-right"></i> </a></router-link>
       </div>
     </div>
 
@@ -20,70 +20,34 @@
 
 <script>
 import {eventBus} from '../../main'
+import Axios from 'axios'
 export default {
 
   name: 'Blogs',
   data() {
     return {
-        id:this.$route.params.id,
-        imageUrl:"/src/assets/img/default.png",
-        blog:[{
-            id:1,
-      photo:"https://i.picsum.photos/id/1/880/660.jpg",
-      author:"Cihan",
-      title:"Magazine WordPress Theme",
-      description:"Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus. Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus. Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus. ",
-      date:'January 24,2016'
-      },
-      {
-          id:2,
-      photo:null,
-      author:"Cihan",
-      title:"Magazine WordPress Theme",
-      description:"Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus.",
-      date:"Juna 24, 2020"
-      },
-      {
-          id:3,
-      photo:"https://i.picsum.photos/id/2/880/660.jpg",
-      author:"Cihan",
-      title:"Magazine WordPress Theme",
-      description:"Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus.Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus.",
-      date:"Juna 24, 2020"
-      },
-      {
-          id:4,
-      photo:"https://i.picsum.photos/id/4/880/660.jpg",
-      author:"Cihan",
-      title:"Magazine WordPress Theme",
-      description:"Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus. Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus.",
-      date:"Juna 24, 2020"
-      },
-      {
-          id:5,
-      photo:"https://i.picsum.photos/id/3/880/660.jpg",
-      author:"Cihan",
-      title:"Magazine WordPress Theme",
-      description:"Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus. Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus.",
-      date:"Juna 24, 2020"
-      },
-      {
-          id:6,
-      photo:"https://i.picsum.photos/id/5/880/660.jpg",
-      author:"Cihan",
-      title:"Magazine WordPress Theme",
-      description:"Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus. Lorem ipsum dolor sit amet,consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et animi facilis tempore voluptas. Ducimus quasi molestiae ratione, consequuntur officiis necessitatibus.",
-      date:"Juna 24, 2020"
-      },
-      ]
+       id:null,
+        imageUrl:'https://i.picsum.photos/id/128/880/660.jpg',
+
+      bloglist:[]
     }
   },
   methods:{
+ 
   },
   watch:{
       '$route'(to,from){
-          this.id =to.params.id
+          this.id =to.params._id
       }
+
+  },
+  mounted(){
+
+   Axios.get('http://localhost:2500/api/post').then(blogs=>{
+     this.bloglist=blogs.data;
+   }).catch(err=>{
+     console.log(err);
+   })
   }
 }
 
@@ -110,12 +74,12 @@ section {
 }
 
 .contentimg {
-  width: 45%;
+  width: 50%;
 }
 
 .contenttext {
   padding-left: 1rem;
-  width: 55%;
+  width: 50%;
   font-size: 1rem;
 
   p {
