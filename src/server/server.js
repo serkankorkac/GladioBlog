@@ -83,9 +83,10 @@ const port = process.env.PORT || 2500;
 //   })
 
 // });
-// app.set('view engine', 'html');
-// app.set('views','../');
-// app.use(express.static(path.join(__dirname, '../')));
+ app.set('view engine', ['css','icon']);
+ app.set('views','../assets/css');
+app.use(express.static(path.join(__dirname, '../assets/css/')));
+
 // app.get('/login', (req, res, next) => {
 //   const index = require('../Login_v14/index.html')
 //   res.sendFile(index)

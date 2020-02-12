@@ -2,9 +2,9 @@
   <aside>
     <div class="sidecardhead">
       <h5>Recommended</h5>
-      <button class="active sidebuttons">Recent</button>
-      <button class="sidebuttons">Popular</button>
-      <button class="sidebuttons">Comments</button>
+      <button class="active sidebuttons" @click="listToRecent()">Recent</button>
+      <button class="sidebuttons" @click="listToPopular()">Popular</button>
+      <button class="sidebuttons" @click="listToComments()">Comments</button>
     </div>
 
     <ul>
@@ -51,14 +51,32 @@
 </template>
 
 <script>
-
+import Axios from 'axios'
 export default {
   name: 'Recommended',
-   data () {
+  data() {
     return {
-      msg: 'Welcome to Your Recommended.js App'
+      blogs: [],
+      recentBlogs:[]
+    }
+  },
+  mounted() {
+    Axios.get('http://localhost:2500/api/post').then(res => {
+      this.blogs = res.data;
+      console.log(this.blogs)
+    }).catch(err => {
+      console.log(err);
+    })
+  },
+  methods: {
+    listToRecent() {
+      let blogDates = null;
+      let blogId = null;
+      // this.recentBlogs=this.blogs[this.blogs.length-1,this.blogs.length-2,this.blogs.length-3]
+      // console.log(this.recentBlogs)
     }
   }
+
 }
 </script>
 
