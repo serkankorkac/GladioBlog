@@ -4,28 +4,32 @@ const blogschema = mongoose.Schema({
     author:{
         type:String,
         required:true
-    },
+     },
     title:{
         type:String,
-        required:true
+        required:true,
     },
-    desc:{
+    content:{
         type:String,
         required:true
     },
-    img:{
+    comment:{
+        type:Array,
+        required:false
+    },
+    image:{
         type:String,
         required:false
     },
     date:{
         type:Date,
-        default:Date.now
+        default:new Date()
     },
     userId:{
         type:mongoose.Schema.Types.ObjectId
     }
    
 });
+const Blog =mongoose.model('Blog',blogschema);
 
-
-module.exports = mongoose.model('Blog',blogschema);
+module.exports = Blog

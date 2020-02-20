@@ -9,6 +9,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const coonetionString = 'mongodb+srv://lanista:92aUvreOuxZ1fk2k@lanistateam-tq8uo.mongodb.net/GladiBlog?retryWrites=true&w=majority';
 const connectService = require('./routes/api/ConnectService/connectService');
 const accountcontroller = require('./routes/api/accountService/accountservice');
+const mongoose = require('mongoose')
 //Middleware
 app.use(bodyParser.urlencoded({
   extended: false
@@ -39,7 +40,7 @@ app.use((req, res, next) => {
       req.user = user;
       next();
     }).catch(err => console.log(err));
-  }
+  }     
 
 })
 const posts = require('./routes/api/blogService/blog');
@@ -55,6 +56,10 @@ app.use('/api/account', accountService);
 const author = require('./routes/api/authorService/authorService');
 app.use('/api/author', author);
 const port = process.env.PORT || 2500;
+mongoose.connect(coonetionString, { useNewUrlParser: true ,useUnifiedTopology: true }); 
+const db = mongoose.connection;
+db.on("error", error => console.log(error));
+db.once("open", () => console.log("connection to db established"));
 // app.post('/login', (req, res, next) => {
 
 //   const email = req.body.email;

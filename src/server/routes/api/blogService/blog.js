@@ -1,39 +1,45 @@
 const exprees= require('express');
 const mongodb =require('mongodb');
+const mongoose = require('mongoose')
 const router = exprees.Router();
-const mongoose = require('mongoose');
-const connectService = require('../ConnectService/connectService');
-const blog = require('../blogschema')
+const Blog = require('../blogschema')
 //Get Post 
 
 router.get('/',async (req,res)=>{
-  const post = await connectService.loadpost();
-   res.send(await post.find().toArray());
+   const posts = await Blog.find();
+   res.send(posts);
 })
 router.get('/:blogid',async (req,res)=>{
-    const post = await connectService.loadpost();
-     res.send(await post.find({_id:new mongodb.ObjectId(req.params.blogid)}).toArray());
+    const posts = await Blog.find({_id:new mongodb.ObjectId(req.params.blogid)});
+     res.send(posts);
   })  
 //Add Post 
 router.post('/',async (req,res)=>{
-    const post = await connectService.loadpost();
-    await post.insertOne({
+    const newblog = new Blog({
         author:req.body.author,
         title:req.body.title,
         comment:[],
         content:req.body.content,
         image:req.body.image,
-        userid:new mongodb.ObjectId(req.params.userid),
-        cradetAt : new Date().toLocaleString()
-    });
-    res.status(201).send();
+        userid:new mongodb.ObjectId(req.params.userid)
+    })
+    try{
+    const blog = await newblog.save();
+    res.status(201).json({ blog });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 })
 //Delete post
 router.delete('/:id',async (req,res)=>{
-    const post = await connectService.loadpost();
-    await post.deleteOne({_id:new mongodb.ObjectId(req.params.id)});
-    
-    res.status(200).send();
+    try{
+        await Blog.deleteOne({_id:req.params.id})
+        res.status(200).send()
+    }
+    catch(err){
+        console.log(err)
+    }
+   
 });
 
 module.exports=router;

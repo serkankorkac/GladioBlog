@@ -32,7 +32,7 @@ import Comments from './Comment'
 export default {
     components:{
         Comments
-    },
+    },                                   
   name: 'Blog',
   data() {
     return {

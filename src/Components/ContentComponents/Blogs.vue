@@ -4,10 +4,10 @@
         <router-view></router-view>
       <div class="contentimg"><img :src="blog.image==null ? imageUrl:blog.image" width="300" height="250"></div>
       <div class="contenttext">
-        <div class="blog-meta"><time class="blogtime">{{blog.cradetAt}}</time><span>/ </span><a class="authorname">{{blog.author}} - {{id}}</a></div><a>
+        <div class="blog-meta"><time class="blogtime">{{blog.date}}</time><span>/ </span><a class="authorname">{{blog.author}} - {{id}}</a></div><a>
           <h3>{{blog.title}}</h3>
         </a>
-        <p class="description">{{blog.title}}
+        <p class="description">{{blog.content}}
         </p>
         <router-link :to="{name:'details',params:{id:blog._id,title:blog.title,author:blog.author,content:blog.content,imageUrl:blog.image,created:blog.cradetAt}}"><a href="" class="continuiereading">Continue reading <i class="fas fa-angle-double-right"></i> </a></router-link>
       </div>
@@ -45,6 +45,7 @@ export default {
 
    Axios.get('http://localhost:2500/api/post').then(blogs=>{
      this.bloglist=blogs.data;
+     console.log(this.bloglist)
    }).catch(err=>{
      console.log(err);
    })
