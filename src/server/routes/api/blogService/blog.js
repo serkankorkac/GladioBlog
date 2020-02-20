@@ -13,7 +13,7 @@ router.get('/',async (req,res)=>{
 router.get('/:blogid',async (req,res)=>{
     const post = await connectService.loadpost();
      res.send(await post.find({_id:new mongodb.ObjectId(req.params.blogid)}).toArray());
-  })
+  })  
 //Add Post 
 router.post('/',async (req,res)=>{
     const post = await connectService.loadpost();
@@ -24,7 +24,7 @@ router.post('/',async (req,res)=>{
         content:req.body.content,
         image:req.body.image,
         userid:new mongodb.ObjectId(req.params.userid),
-        cradetAt : new Date()
+        cradetAt : new Date().toLocaleString()
     });
     res.status(201).send();
 })

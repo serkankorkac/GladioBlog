@@ -55,14 +55,42 @@
 </template>
 
 <script>
-
+import Axios from 'axios'
 export default {
   name: 'Recent',
    data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      blogs :[]
     }
   },
+   mounted() {
+
+    Axios.get('http://localhost:2500/api/post').then(res => {
+      this.blogs= res.data;
+    }).then(()=>{
+      this.listToRecent(this.blogs)
+       
+    }).catch(err => {
+      console.log(err);
+    })
+
+    
+  },
+  methods:{
+    listToRecent(blogs){
+    console.log(blogs.sort(function (a, b) {
+      for (let i = 0; i < blogs.length; i++) {
+        const element = blogs[i];
+        
+      }
+        var keyA = new Date(a.comment.date),
+          keyB = new Date(b.comment.date);
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+        return 0;
+    }))
+    }
+  }
 }
 </script>
 

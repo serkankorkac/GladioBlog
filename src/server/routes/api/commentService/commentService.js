@@ -6,8 +6,9 @@ const connectService = require('../ConnectService/connectService');
 
 router.put('/:blogid',async (req,res)=>{
     const post = await connectService.loadpost();
-    await post.findOneAndUpdate({ _id: new mongodb.ObjectId(req.params.blogid)},{$push:{comment: [{content: req.body.content,name:req.body.name,email:req.body.email,website:req.body.website,commentid:new mongodb.ObjectId}]}});
+    await post.findOneAndUpdate({ _id: new mongodb.ObjectId(req.params.blogid)},{$push:{comment: [{content: req.body.content,name:req.body.name,email:req.body.email,website:req.body.website,date:new Date().toLocaleString()     ,commentid:new mongodb.ObjectId}]}});
     res.send(200).send();
+    r
 });
 router.delete('/:blogid',async (req,res)=>{
     const post = await connectService.loadpost();

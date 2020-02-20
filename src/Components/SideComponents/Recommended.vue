@@ -2,21 +2,21 @@
   <aside>
     <div class="sidecardhead">
       <h5>Recommended</h5>
-      <button class="active sidebuttons" @click="listToRecent(blogs)">Recent</button>
+      <button class=" sidebuttons" @click="listToRecent()">Recent</button>
       <button class="sidebuttons" @click="listToPopular()">Popular</button>
       <button class="sidebuttons" @click="listToComments()">Comments</button>
     </div>
 
     <ul>
-      <li  v-for="blog in blogs" :key="blog._id">
+      <li  v-for="blog in recentBlogs" :key="blog.id">
         <div class="imgdiv"><img :src="blog.image" alt="Blog İmage">
         </div>
         <div class="sidetext">
           <a href="">
-            <h6>Magazine WordPress Theme</h6>
+            <h6>{{blog.title}}</h6>
           </a>
           <div class="blog-meta">
-            <time class="blogtime">January 24, 2016</time>
+            <time class="blogtime">{{blog.cradetAt}}</time>
           </div>
         </div>
       </li>
@@ -34,17 +34,17 @@ export default {
   data() {
     return {
       blogs: [],
-
-
+      blogCounter:[],
+      recentBlogs:[]
     
     }
   },
   mounted() {
-    let getBlogs=[]
-    Axios.get('http://localhost:2500/api/post').then(res => {
-      getBlogs= res.data;
+
+    Axios.get('http://localhost:2500/api/post').then((res) => {
+      this.blogs= res.data;
     }).then(()=>{
-      this.listToRecent(getBlogs);
+      this.listToRecent();
     }).catch(err => {
       console.log(err);
     })
@@ -52,56 +52,62 @@ export default {
     
   },
   methods: {
-    listToRecent(blogs) {
-      this.blogs= [];
-      this.blogs.push(blogs[blogs.length-3],blogs[blogs.length-2],blogs[blogs.length-1]);
-      //this.recentBlogs.push(this.blogs[this.blogs.length-1],this.blogs[this.blogs.length-2],this.blogs[this.blogs.length-3])
-      
-    },  
-    listToPopular(){
+    listToRecent() {
+      this.recentBlogs = [];
+      this.recentBlogs.push(this.blogs[this.blogs.length - 3], this.blogs[this.blogs.length - 2], this.blogs[this.blogs.length - 1])
+    },
+    listToPopular() {
       Axios.get('http://localhost:2500/api/counter').then(res => {
         this.blogCounter = [];
+        let by = [];
         this.blogCounter = res.data;
-        var by = []
-        for (let index = 0; index < this.blogCounter.length; index++) {
-
-          if (index == 0) {
-            var element = this.blogCounter[index].counter
-          }
-          if (this.blogCounter[index].counter >= element) {
-            if (by.length > 3) {
-              for (let i = 0; i < by.length; index++) {
-                const elt = by[i];
-                if (elt < element) {
-                  by.splice(i, 1)
-                  by.push(this.blogCounter[index])
-                }
-              }
-            } else if (by.length < 3) {
-              by.push(this.blogCounter[index])
-            } else {
-              by.push(this.blogCounter[index])
-              element = this.blogCounter[index].counter
-            }
-          }
-        }
-        by.map(counter => {
-       
-          this.blogs.map(res => {
-            if (counter.blogid == res._id) {
-              this.recentBlogs=[];
-              this.recentBlogs+=counter;
+        this.blogCounter.forEach(element => {
+          by.push({
+            counter: element.counter,
+            id:  element.blogid
+          })
+       });
+          
+        
+      by.sort(function (a, b) {
+          var keyA = a.counter,
+            keyB = b.counter;
+          if (keyA < keyB) return -1;
+          if (keyA > keyB) return 1;
+          return 0;
+        })
+        this.recentBlogs = []
+        let popular = []
+        by.forEach(element => {
+          this.blogs.forEach(blog=>{
+             if (blog._id == element.id) {
+              popular.push(blog)
             }
           })
-         
-        })
-      
-       console.log(this.recentBlogs)
-       console.log(this.blogPopular);
-      
+        });
+        // by.map(count => {
+        //   this.blogs.map(blog => {
+        //     if (blog._id == count.id) {
+        //       popular.push(blog)
+        //     }
+        //   })
+        // })
+        this.recentBlogs.push(popular[popular.length - 1] , popular[popular.length - 2], popular[popular.length - 3])
+
       })
-      }
-      }
+    },
+    listToComments(){
+      this.blogs.sort(function (a, b) {
+          var keyA = a.comment.length,
+            keyB = b.comment.length ;
+          if (keyA < keyB) return -1;
+          if (keyA > keyB) return 1;
+          return 0;
+        })
+        this.recentBlogs=[]
+        this.recentBlogs.push(this.blogs[this.blogs.length - 1] , this.blogs[this.blogs.length - 2], this.blogs[this.blogs.length - 3])
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
