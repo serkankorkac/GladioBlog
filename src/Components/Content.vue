@@ -1,81 +1,17 @@
 <template>
   <section>
-    <div class="cardb clearfix">
-      <div class="contentimg"><img src="https://i.picsum.photos/id/1/880/660.jpg" width="300" height="250"
-          alt="Blog İmage"></div>
-      <div class="contenttext">
-        <div class="blog-meta"><time class="blogtime">January 24,
-            2016</time><span>/ </span><a class="authorname">Thomas</a></div>
-            <a clas="blogheadtext">
-          <h3>Magazine WordPress Theme</h3>
-        </a>
-        <p>Lorem ipsum dolor sit amet,
-          consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
-        </p><a class="continuiereading">Continue reading <i class="fas fa-angle-double-right"></i></a>
-      </div>
-    </div>
-    <div class="cardb clearfix">
-      <div class="contentimg"><img src="https://i.picsum.photos/id/42/880/660.jpg" width="300" height="250"
-          alt="Blog İmage"></div>
-      <div class="contenttext">
-        <div class="blog-meta"><time class="blogtime">January 24,
-            2016</time><span>/ </span><a class="authorname">Thomas</a></div><a>
-          <h3>Magazine WordPress Theme</h3>
-        </a>
-        <p>Lorem ipsum dolor sit amet,
-          consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
-        </p><a class="continuiereading">Continue reading <i class="fas fa-angle-double-right"></i></a>
-      </div>
-    </div>
-    <div class="cardb clearfix">
-      <div class="contentimg"><img src="https://i.picsum.photos/id/33/880/660.jpg" width="300" height="250"
-          alt="Blog İmage"></div>
-      <div class="contenttext">
-        <div class="blog-meta"><time class="blogtime">January 24,
-            2016</time><span>/ </span><a class="authorname">Thomas</a></div><a>
-          <h3>Magazine WordPress Theme</h3>
-        </a>
-        <p>Lorem ipsum dolor sit amet,
-          consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
-        </p><a class="continuiereading">Continue reading <i class="fas fa-angle-double-right"></i></a>
-      </div>
-    </div>
-    <div class="cardb clearfix">
-      <div class="contentimg"><img src="https://i.picsum.photos/id/24/880/660.jpg" width="300" height="250"
-          alt="Blog İmage"></div>
-      <div class="contenttext">
-        <div class="blog-meta"><time class="blogtime">January 24,
-            2016</time><span>/ </span><a class="authorname">Thomas</a></div><a>
-          <h3>Magazine WordPress Theme</h3>
-        </a>
-        <p>Lorem ipsum dolor sit amet,
-          consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
-        </p><a class="continuiereading">Continue reading <i class="fas fa-angle-double-right"></i></a>
-      </div>
-    </div>
-    <div class="cardb clearfix">    
-      <div class="contentimg"><img src="https://i.picsum.photos/id/15/880/660.jpg" width="300" height="250"
-          alt="Blog İmage"></div>
-      <div class="contenttext">
-        <div class="blog-meta"><time class="blogtime">January 24,
-            2016</time><span>/ </span><a class="authorname">Thomas</a></div><a>
-          <h3>Magazine WordPress Theme</h3>
-        </a>
-        <p>Lorem ipsum dolor sit amet,
-          consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
-        </p><a class="continuiereading">Continue reading <i class="fas fa-angle-double-right"></i></a>
-      </div>
-    </div>
 
-
-    <div class="olderposts text-center"><button>Older Posts</button></div>
-   
+    <Blogs></Blogs>
 
   </section>
 </template>
 
 <script>
+import Blogs from './ContentComponents/Blogs'
 export default {
+  components:{
+    Blogs
+  },
 
   name: 'Content',
   data() {
@@ -99,7 +35,10 @@ export default {
 section {
   width: 100%;
 }
-
+img{
+  width: 100%;
+  height: auto;
+}
 .contentimg,
 .contenttext {
   margin: 0;
@@ -108,13 +47,15 @@ section {
 }
 
 .contentimg {
-  width: 30%;
-  margin-left: 3rem;
+
+  width: 35%;
+  margin-left: 2rem;
 }
 
 .contenttext {
-  padding-left: 3rem;
-  width: 62%;
+  margin-left: 2rem;
+
+  width: 55%;
   font-size: 1rem;
 
   p {
@@ -126,7 +67,7 @@ section {
 .blog-meta {
   font-size: 0.85rem;
   color: @incolor;
-  margin-top: 0.70rem;
+
 }
 
 .cardb {
@@ -162,10 +103,6 @@ section {
 a{
      transition: 1s;
      cursor: pointer;
-     
-}
-a:hover{
-  color:@redcolor;
 }
 button:hover{
   background-color: @redcolor;

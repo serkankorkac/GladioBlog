@@ -1,57 +1,115 @@
 <template>
   <aside>
     <div class="sidecardhead">
-    <h5>Recommended</h5>
-    <button class="active sidebuttons">Recent</button>
-    <button class="sidebuttons">Popular</button>
-    <button class="sidebuttons">Comments</button>
+      <h5>Recommended</h5>
+      <button class=" sidebuttons" @click="listToRecent()">Recent</button>
+      <button class="sidebuttons" @click="listToPopular()">Popular</button>
+      <button class="sidebuttons" @click="listToComments()">Comments</button>
     </div>
 
-    <div class="sidecard clearfix">
-      <div class="sideimg"><img src="https://i.picsum.photos/id/11/90/65.jpg" width="90" height="65" alt="Blog İmage">
-      </div>
-      <div class="sidetext">
-        <a href=""><h6>Magazine WordPress Theme</h6></a>
-        <div class="blog-meta">
-          <time class="blogtime">January 24, 2016</time>
+    <ul>
+      <li  v-for="blog in recentBlogs" :key="blog.id">
+        <div class="imgdiv"><img :src="blog.image" alt="Blog İmage">
         </div>
-      </div>
-    </div>
-    <div class="sidecard clearfix">
-      <div class="sideimg"><img src="https://i.picsum.photos/id/22/90/65.jpg" width="90" height="65" alt="Blog İmage">
-      </div>
-      <div class="sidetext">
-        <a href=""><h6>Magazine WordPress Theme</h6></a>
-        <div class="blog-meta">
-          <time class="blogtime">January 24, 2016</time>
+        <div class="sidetext">
+          <a href="">
+            <h6>{{blog.title}}</h6>
+          </a>
+          <div class="blog-meta">
+            <time class="blogtime">{{blog.cradetAt}}</time>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="sidecard clearfix">
-      <div class="sideimg"><img src="https://i.picsum.photos/id/33/90/65.jpg" width="90" height="65" alt="Blog İmage">
-      </div>
-      <div class="sidetext">
-        <a href=""><h6>Magazine WordPress Theme</h6></a>
-        <div class="blog-meta">
-          <time class="blogtime">January 24, 2016</time>
-        </div>
-      </div>
-    </div>
+      </li>
+      
+    </ul>
+
+
   </aside>
 </template>
 
 <script>
-
+import Axios from 'axios'
 export default {
   name: 'Recommended',
-   data () {
+  data() {
     return {
-      msg: 'Welcome to Your Recommended.js App'
+      blogs: [],
+      blogCounter:[],
+      recentBlogs:[]
+    
+    }
+  },
+  mounted() {
+
+    Axios.get('http://localhost:2500/api/post').then((res) => {
+      this.blogs= res.data;
+    }).then(()=>{
+      this.listToRecent();
+    }).catch(err => {
+      console.log(err);
+    })
+
+    
+  },
+  methods: {
+    listToRecent() {
+      this.recentBlogs = [];
+      this.recentBlogs.push(this.blogs[this.blogs.length - 3], this.blogs[this.blogs.length - 2], this.blogs[this.blogs.length - 1])
+    },
+    listToPopular() {
+      Axios.get('http://localhost:2500/api/counter').then(res => {
+        this.blogCounter = [];
+        let by = [];
+        this.blogCounter = res.data;
+        this.blogCounter.forEach(element => {
+          by.push({
+            counter: element.counter,
+            id:  element.blogid
+          })
+       });
+          
+        
+      by.sort(function (a, b) {
+          var keyA = a.counter,
+            keyB = b.counter;
+          if (keyA < keyB) return -1;
+          if (keyA > keyB) return 1;
+          return 0;
+        })
+        this.recentBlogs = []
+        let popular = []
+        by.forEach(element => {
+          this.blogs.forEach(blog=>{
+             if (blog._id == element.id) {
+              popular.push(blog)
+            }
+          })
+        });
+        // by.map(count => {
+        //   this.blogs.map(blog => {
+        //     if (blog._id == count.id) {
+        //       popular.push(blog)
+        //     }
+        //   })
+        // })
+        this.recentBlogs.push(popular[popular.length - 1] , popular[popular.length - 2], popular[popular.length - 3])
+
+      })
+    },
+    listToComments(){
+      this.blogs.sort(function (a, b) {
+          var keyA = a.comment.length,
+            keyB = b.comment.length ;
+          if (keyA < keyB) return -1;
+          if (keyA > keyB) return 1;
+          return 0;
+        })
+        this.recentBlogs=[]
+        this.recentBlogs.push(this.blogs[this.blogs.length - 1] , this.blogs[this.blogs.length - 2], this.blogs[this.blogs.length - 3])
     }
   }
 }
 </script>
-
 <style lang="less" scoped>
 /*
 Page Bg color #E5E5E5 =@pagebgcolor 
@@ -74,11 +132,9 @@ Red : #e33 = @redcolor
 @contentfont:'Exo', sans-serif;
 @btntextcolor:#eee;
 
-
 button{
     background-color: #303030;
-    border: none;
-  
+    border: none;  
     padding:.4rem;
     color: @bgcolor;
     font-size: .9rem;
@@ -104,25 +160,28 @@ a{
 .active{
     background-color: @redcolor;
 }
-.sidecard{
+
+img{
+  vertical-align: text-top;
+  float: left;
+  width: 100%;
+  height: auto;
+  margin-right: 1rem;
+}
+ul{
+  padding:1rem;
+}
+li{
+  list-style: none;
   padding-top: 1rem;
-  padding-left: 1rem;
-
+  overflow: auto;
 }
-.sideimg{
-  width: 30%;
-  float: left;
-  padding-top:1rem;
-
-
-
-
+.imgdiv{
+width: 6rem;
 }
+
 .sidetext{
-  width: 70%;
-  float: left;
-   padding-top:1rem;
-   padding-left:1rem;
+
     h6{
       color: @redcolor;
       transition: 1s;

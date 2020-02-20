@@ -2,13 +2,14 @@
   <nav class="navbar navbar-expand-lg">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
+        
+        <router-link to="/" tag="li" class="nav-item active">
+             <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+        </router-link>
         <li class="nav-item">
           <a class="nav-link" href="#">Authors</a>
         </li>
@@ -24,9 +25,9 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+        <router-link to="/contact" tag="li" class="nav-item active">
+             <a class="nav-link">İletişim</a>
+        </router-link>
       </ul>
 
     </div>
@@ -59,8 +60,18 @@ nav{
 a{
     margin-right: 3rem;
 }
-  a:hover {
+  a:hover{
 
   color: @redcolor;
+  
 }
+i{
+ 
+  color: @bgcolor;
+}
+i:hover{
+ 
+  color: @redcolor;
+}
+
 </style>
