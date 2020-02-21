@@ -43,7 +43,7 @@ export default {
   },
   mounted(){
 
-   Axios.get('http://localhost:2500/api/post').then(blogs=>{
+   Axios.get('http://167.172.163.22/api/post').then(blogs=>{
      this.bloglist=blogs.data;
    }).catch(err=>{
      console.log(err);
